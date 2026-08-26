@@ -1,47 +1,47 @@
 # agent-skills
 
-Personal fleet. Cursor reads `~/.agents/skills`, which is a symlink to `skills/` in this repo.
+Global Cursor skills. `~/.agents/skills` is a symlink to `skills/` here.
 
-Do **not** `npx skills add -g`. That is how 54 unused skills landed on this machine. Edit this repo instead.
+Edit this repo to change skills. Do not `npx skills add -g` or `npx skills update`.
 
-`codebase-memory` is not here. It stays in `~/.cursor/skills` (Cursor + MCP).
+`codebase-memory` lives in `~/.cursor/skills`. Project skills live in the project.
 
-## Why each skill is here
+Copied from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack/skills). Not tracked as submodules.
 
-Audited against chat history (Specter / TEE / fermentito). Cherry-picked from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack/skills). Upstream text is unmodified.
+## Skills
 
-| Skill | Source | Why |
-|---|---|---|
-| `grill-me` | Matt | Default planning loop. Most-used slash skill. |
-| `grilling` | Matt | Primitive `grill-me` and ICA both call. |
-| `handoff` | Matt | Multi-session Specter / TEE / adb work. |
-| `unslop` | pstack | Kill AI sludge. Same job as ponytail, for prose. |
-| `diagnosing-bugs` | Matt | User reports and device logs. High fit, unused before. |
-| `research` | Matt | Upstream parity (PIF, Tricky, OhMy, TEESimulator). |
-| `blast-radius` | pstack | Small Magisk change: prove what else breaks. |
-| `how` | pstack | "How does this work?" walkthroughs. |
-| `why` | pstack | "Why is it this way?" from git/issues/docs. |
-| `bro` | pstack | Restate the last message in plain language. |
-| `improve-codebase-architecture` | Matt | Deepening scan. Used twice, kept on purpose. |
-| `codebase-design` | Matt | ICA's vocabulary. Not optional if ICA stays. |
-| `domain-modeling` | Matt | ICA writes `CONTEXT.md` / ADRs through this. |
+| Skill | When to use |
+|---|---|
+| `grill-me` | Plan or decision before building. `/` |
+| `grilling` | Interview primitive. Called by `grill-me` and `improve-codebase-architecture`. |
+| `handoff` | Compact this session so another agent can continue. `/` |
+| `unslop` | Strip AI tells from writing. Always-on via `rules/unslop.mdc`, not via the skill. |
+| `diagnosing-bugs` | Hard bug or regression. Starts from a pass/fail loop. |
+| `research` | Primary-source investigation, cited markdown in the repo. |
+| `blast-radius` | What else a small change could break. Prove it by running code. `/` |
+| `how` | How a subsystem works. Runtime, ownership, layering. |
+| `why` | Why it is this shape. Git, issues, docs. |
+| `bro` | Restate the last message in plain language. `/` |
+| `improve-codebase-architecture` | Scan for deepening opportunities, then grill one. `/` |
+| `codebase-design` | Deep-module vocabulary. Required by `improve-codebase-architecture`. |
+| `domain-modeling` | Glossary and ADRs. Required by `improve-codebase-architecture`. |
 
-Not here on purpose: `/implement` (fights no-TDD), `/ask-matt`, `/code-review`, `/interrogate`, `/tdd`, Better Auth, Alvar, `find-skills`.
+Not in this fleet: `implement`, `ask-matt`, `code-review`, `interrogate`, `tdd`. After `/grill-me`, implement in the conversation. Tests stay with the user.
 
-Project-only skills (fermentito `prototype`, `grill-with-docs`, …) live in those repos, not this fleet.
+Skills are opt-in. Cursor injects them only when the agent reads `SKILL.md`. A `description` of "Must always apply" does nothing by itself. Always-on behavior is a Cursor rule with `alwaysApply: true`.
 
-## Install on a machine
+## New machine
 
 ```bash
 git clone git@github.com:bocho8/agent-skills.git ~/agent-skills
-# wipe any npx global install first, then:
-rm -rf ~/.agents/skills ~/.agents/.skill-lock.json
-mkdir -p ~/.agents
+rm -rf ~/.agents/skills
+mkdir -p ~/.agents ~/.cursor/rules
 ln -sfn ~/agent-skills/skills ~/.agents/skills
+ln -sfn ~/agent-skills/rules/unslop.mdc ~/.cursor/rules/unslop.mdc
 ```
 
-Restart Cursor.
+Do not run `npx skills remove --all`. It deletes `~/.cursor/skills` too. Restart Cursor.
 
-## Update from upstream
+## Upstream
 
-Copy the skill folder again from the source repo when you mean to. Do not `npx skills update`.
+Replace the skill folder from the source repo when you want their latest. Leave the rest of this repo alone.
