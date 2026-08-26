@@ -1,0 +1,16 @@
+---
+description: Cut AI tells from UI
+alwaysApply: true
+---
+
+When building or editing UI, apply `~/.agents/skills/unslop-ui/SKILL.md`. Read that file. Do not skip it.
+
+Hard rules even before the read:
+- Use the repo's colors, type, and components. Do not invent a palette or a font.
+- Do not restyle the app shell to look designed.
+- No default layout from the training prior: no 3 equal icon cards, no centered full-viewport hero, no rainbow gradient.
+- No fake browser, phone, or IDE chrome.
+- No invented metrics, logos, avatars, or quotes.
+- No italic headings. No gradient text as the brand.
+- No decorative blobs, orbs, mesh gradients, or glass for its own sake.
+- No `transition-all`. No `hover:scale-105` as the hover.

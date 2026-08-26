@@ -6,7 +6,7 @@ Edit this repo to change skills. Do not `npx skills add -g` or `npx skills updat
 
 `codebase-memory` lives in `~/.cursor/skills`. Project skills live in the project.
 
-Copied from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack/skills). Not tracked as submodules.
+Copied from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack/skills). `unslop-ui` tells adapted from [Nutlope/hallmark](https://github.com/Nutlope/hallmark). Not tracked as submodules.
 
 ## Skills
 
@@ -16,6 +16,7 @@ Copied from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstac
 | `grilling` | Interview primitive. Called by `grill-me` and `improve-codebase-architecture`. |
 | `handoff` | Compact this session so another agent can continue. `/` |
 | `unslop` | Strip AI tells from writing. Always-on via `rules/unslop.mdc`, not via the skill. |
+| `unslop-ui` | Strip AI tells from UI. Always-on bans via `rules/unslop-ui.mdc`; full tells when building UI. |
 | `diagnosing-bugs` | Hard bug or regression. Starts from a pass/fail loop. |
 | `research` | Primary-source investigation, cited markdown in the repo. |
 | `blast-radius` | What else a small change could break. Prove it by running code. `/` |
@@ -38,6 +39,7 @@ rm -rf ~/.agents/skills
 mkdir -p ~/.agents ~/.cursor/rules
 ln -sfn ~/agent-skills/skills ~/.agents/skills
 ln -sfn ~/agent-skills/rules/unslop.mdc ~/.cursor/rules/unslop.mdc
+ln -sfn ~/agent-skills/rules/unslop-ui.mdc ~/.cursor/rules/unslop-ui.mdc
 ```
 
 Do not run `npx skills remove --all`. It deletes `~/.cursor/skills` too. Restart Cursor.
