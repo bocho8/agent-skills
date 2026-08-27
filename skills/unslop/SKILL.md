@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: Cut AI tells from any writing. Must always apply.
+description: Cut AI tells from any writing. Must always apply. Use when writing or editing prose, docs, README, commit messages, PR text, or any user-visible copy, and when the user invokes /unslop.
 ---
 
 # Unslop

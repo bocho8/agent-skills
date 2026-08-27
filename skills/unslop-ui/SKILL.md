@@ -1,6 +1,6 @@
 ---
 name: unslop-ui
-description: "Refuse LLM-default UI in existing apps. Reuse local tokens and components, ban named AI tells. Use when building, editing, or restyling UI, components, pages, CSS, or Tailwind."
+description: "Refuse LLM-default UI in existing apps. Reuse local tokens and components, ban named AI tells. Use when building, editing, or restyling UI, components, pages, CSS, or Tailwind, and when the user invokes /unslop-ui."
 ---
 
 # Unslop UI
