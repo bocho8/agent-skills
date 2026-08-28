@@ -4,7 +4,7 @@ Global agent skills. Edit this repo to change them. Do not `npx skills add -g` o
 
 `codebase-memory` is not in this repo. Install it from the MCP download below. Project skills live in the project.
 
-Copied from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack/skills). `unslop-ui` tells adapted from [Nutlope/hallmark](https://github.com/Nutlope/hallmark). Not tracked as submodules.
+Copied from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack/skills). `unslop-ui` tells adapted from [Nutlope/hallmark](https://github.com/Nutlope/hallmark). `/teach` and `/visualize` adapted from [amosblomqvist/learn](https://github.com/amosblomqvist/learn), rewritten. Not tracked as submodules.
 
 ## Skills
 
@@ -24,6 +24,16 @@ Copied from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstac
 | `improve-codebase-architecture` | Scan for deepening opportunities, then grill one. `/` |
 | `codebase-design` | Deep-module vocabulary. Required by `improve-codebase-architecture`. |
 | `domain-modeling` | Glossary and ADRs. Required by `improve-codebase-architecture`. |
+| `teach` | Teach a topic so it locks in. Probe, plan, node by node. `/` |
+| `visualize` | One correct diagram when a picture carries the idea. `/`. Used by `teach`. |
+
+`/teach` and `/visualize` require [`@mermaid-js/mermaid-cli`](https://github.com/mermaid-js/mermaid-cli) and Chrome or Chromium. The plan DAG and mermaid pictures render through it. SVG pictures also need `rsvg-convert` or ImageMagick `magick`.
+
+```bash
+npm install -g @mermaid-js/mermaid-cli
+```
+
+Fedora: `sudo dnf install chromium`. SVG: `sudo dnf install librsvg2-tools`.
 
 Not in this fleet: `implement`, `ask-matt`, `code-review`, `interrogate`, `tdd`. After `/grill-me`, implement in the conversation. Tests stay with the user.
 
