@@ -53,13 +53,12 @@ No invented metrics, logos, avatars, quotes, or lorem. A number-shaped hole beat
 7. **Glassmorphism without purpose.** Frosted panels only when they sit over real content. Not as decoration, not over a gradient.
 8. **Hover-only affordances.** Hover that reveals a menu, delete, or crucial tooltip must also work on focus and tap.
 9. **Tabular data without tabular-nums.** Prices, dates, and metrics get `font-variant-numeric: tabular-nums`.
-10. **Animate-on-scroll on everything.** One entrance at most. The rest of the page is just there.
-11. **Mismatched icon sets.** One icon library, the one already in the repo. If none, pick one and keep it. Do not mix strokes.
-12. **AI-illustration look.** No mesh-blob people, Midjourney lighting, or corporate doodle humans. Real photos, simple CSS or SVG, or omit.
-13. **Invented metrics.** No "10×", "50,000+ teams", "+47% conversion" unless the user supplied the number. Use a labelled pending block, ask, or drop the stat slot.
-14. **Generic emoji as feature icon.** No ✨🚀⚡🔥🎯✅ as the icon. Same library as the rest, a custom SVG, or typography alone.
-15. **Re-drawn UI chrome.** No fake browser bars, phone notches, code-window dots, or IDE chrome. Real screenshot, hairline border at most.
-16. **Mid-render token improvisation.** After the first colour and font are chosen, every later value goes through a named token. No leftover hex in a hover or focus ring.
-17. **Wrap-to-two-lines clickable text.** Buttons, nav links, footer links, breadcrumbs, and CTAs stay one line. Shorten the label or `white-space: nowrap`.
-18. **Lottie shortcut.** No LottieFiles checkmark, spinner, or loading-dots pull. CSS or a small SVG.
-19. **Three.js for a still object.** If the user cannot move it, it is a photo or an SVG, not a WebGL bundle.
+10. **Mismatched icon sets.** One icon library, the one already in the repo. If none, pick one and keep it. Do not mix strokes.
+11. **AI-illustration look.** No mesh-blob people, Midjourney lighting, or corporate doodle humans. Real photos, simple CSS or SVG, or omit.
+12. **Invented metrics.** No "10×", "50,000+ teams", "+47% conversion" unless the user supplied the number. Use a labelled pending block, ask, or drop the stat slot.
+13. **Generic emoji as feature icon.** No ✨🚀⚡🔥🎯✅ as the icon. Same library as the rest, a custom SVG, or typography alone.
+14. **Re-drawn UI chrome.** No fake browser bars, phone notches, code-window dots, or IDE chrome. Real screenshot, hairline border at most.
+15. **Mid-render token improvisation.** After the first colour and font are chosen, every later value goes through a named token. No leftover hex in a hover or focus ring.
+16. **Wrap-to-two-lines clickable text.** Buttons, nav links, footer links, breadcrumbs, and CTAs stay one line. Shorten the label or `white-space: nowrap`.
+17. **Lottie shortcut.** No LottieFiles checkmark, spinner, or loading-dots pull. CSS or a small SVG.
+18. **Three.js for a still object.** If the user cannot move it, it is a photo or an SVG, not a WebGL bundle.
