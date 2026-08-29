@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # Render a mermaid file to PNG for the look-loop. mermaid-cli is required.
 # Usage: render-mermaid.sh <input.mmd> <output.png>
+#
+# Chrome typically cannot launch in the default Cursor sandbox. Callers
+# should run this script with required_permissions: ["all"]. If Chrome,
+# Chromium, puppeteer, or the sandbox fails, retry the same command with
+# all. Do not treat that first failure as missing mermaid-cli.
 set -euo pipefail
 
 if [[ $# -ne 2 ]]; then
@@ -59,8 +64,20 @@ if chrome=$(find_chrome); then
   cfg=(-p "$tmp/puppeteer.json")
 fi
 
-if ! run_mmdc -i "$input" -o "$output" "${cfg[@]+"${cfg[@]}"}"; then
-  echo "render-mermaid.sh: mermaid-cli failed. mermaid-cli is required (npm install -g @mermaid-js/mermaid-cli) plus Chrome or Chromium." >&2
+err="$tmp/mmdc.err"
+set +e
+run_mmdc -i "$input" -o "$output" "${cfg[@]+"${cfg[@]}"}" 2>"$err"
+status=$?
+set -e
+if [[ -s "$err" ]]; then
+  cat "$err" >&2
+fi
+if [[ $status -ne 0 ]]; then
+  if grep -qiE 'sandbox|Failed to launch|chrome|chromium|puppeteer|browser process' "$err" 2>/dev/null; then
+    echo "render-mermaid.sh: Chrome could not launch in this sandbox. Retry the same command with required_permissions: [\"all\"]." >&2
+  else
+    echo "render-mermaid.sh: mermaid-cli failed. mermaid-cli is required (npm install -g @mermaid-js/mermaid-cli) plus Chrome or Chromium." >&2
+  fi
   exit 1
 fi
 
