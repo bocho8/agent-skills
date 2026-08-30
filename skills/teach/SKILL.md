@@ -136,9 +136,11 @@ Do not write a file. You teach from the brief.
 
 ## Math
 
-Cursor chat typesets `\(f(x)\)` inline and `\[...\]` or `$$` for display. It does not typeset `$...$`. Those dollars stay on the page.
+If the lesson needs notation, write LaTeX. Never `f(x) = x^2` as plain text.
 
-If the lesson needs notation, write that LaTeX. Never `$f(x)$`. Never `f(x) = x^2` as plain text in the teaching reply or in `lessons/<slug>.md`.
+Cursor chat does not typeset `$...$`. Those dollars stay on the page. In the teaching reply: `\(f(x)\)` inline, `\[...\]` or `$$` for display. Never `$f(x)$`.
+
+In `lessons/<slug>.md`: `$f(x)$` inline, `$$` for display. That file is markdown. Do not copy the chat delimiters into it.
 
 `AskQuestion` option labels are plain text. Write `15 + 10 - 5 = 20` there, no delimiters.
 
