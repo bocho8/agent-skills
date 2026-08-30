@@ -10,8 +10,9 @@ Copied from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstac
 
 | Skill | When to use |
 |---|---|
-| `grill-me` | Plan or decision before building. `/` |
-| `grilling` | Interview primitive. Called by `grill-me` and `improve-codebase-architecture`. |
+| `grill-me` | Plan or decision before building. No files. `/` |
+| `grill-with-docs` | Same interview, writes `CONTEXT.md` and ADRs as you go. `/` |
+| `grilling` | Interview primitive. Called by `grill-me`, `grill-with-docs`, and `improve-codebase-architecture`. |
 | `handoff` | Compact this session so another agent can continue. `/` |
 | `unslop` | Strip AI tells from writing. Always-on rule plus `/unslop`. |
 | `unslop-ui` | Strip AI tells from UI. Always-on bans plus `/unslop-ui` when building UI. |
@@ -35,7 +36,7 @@ npm install -g @mermaid-js/mermaid-cli
 
 Fedora: `sudo dnf install chromium`. SVG: `sudo dnf install librsvg2-tools`.
 
-Not in this fleet: `implement`, `ask-matt`, `code-review`, `interrogate`, `tdd`. After `/grill-me`, implement in the conversation. Tests stay with the user.
+Not in this fleet: `implement`, `ask-matt`, `code-review`, `interrogate`, `tdd`. After `/grill-me` or `/grill-with-docs`, implement in the conversation. Tests stay with the user.
 
 Skills are opt-in until the agent reads `SKILL.md`. A `description` of "Must always apply" does nothing by itself in Cursor. Always-on behavior is a rule file that forces that read: Cursor `rules/*.mdc`, Claude Code `rules/*.md`. `unslop` and `unslop-ui` are still skills. They live in `skills/` with the rest, show up in `/skills`, and `/unslop` / `/unslop-ui` attach them on a message.
 
@@ -54,7 +55,7 @@ Set-ExecutionPolicy -Scope Process Bypass
 `-Mcp` also installs [codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp). Skills only: `.\install.ps1`.
 
 3. Restart Claude Code. Check `/skills` and `/mcp`.
-4. Slash skills (`/grill-me`, `/handoff`, `/blast-radius`, `/bro`, `/unslop`, `/unslop-ui`) only run when the `/` name is on the message you send. `unslop` still applies every reply through the rule.
+4. Slash skills (`/grill-me`, `/grill-with-docs`, `/handoff`, `/blast-radius`, `/bro`, `/unslop`, `/unslop-ui`) only run when the `/` name is on the message you send. `unslop` still applies every reply through the rule.
 
 `install.ps1` junctions every skill, including `unslop` and `unslop-ui`, into `%USERPROFILE%\.claude\skills\`. It also copies `unslop.md` / `unslop-ui.md` into `%USERPROFILE%\.claude\rules\` so the short bans are always on. Existing real folders are left alone. Re-run after a pull.
 
