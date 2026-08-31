@@ -60,9 +60,10 @@ If the file already exists, read it first. Landed nodes are a floor. Probe holes
 Build them so evenness is automatic. Do not write a good answer plus throwaways and audit later.
 
 1. Every option is a bare claim. No justification in any option. All reasoning goes in the explanation you give *after* they answer.
-2. Write the correct claim first. Mutate it into each distractor: one real misconception, same skeleton, grain, and register. The correct option is just the claim under the correct belief.
+2. Draft the correct claim. Mutate it into each distractor: one real misconception, same skeleton, grain, and register. The correct option is just the claim under the correct belief.
 3. Each distractor is an error they might actually make, and unambiguously wrong on the intended reading.
 4. No asymmetric bolding. Bold nothing, or the parallel term in every option.
+5. Drafting order is not display order. Count quizzes this lesson, 1-based, probe included. With k options, put the correct claim at 0-based index `(n mod k)`. Fill the other slots from the distractors in draft order. Do not leave the correct claim first by habit.
 
 If you can tell which is right without knowing the material, regenerate. Do not patch.
 
