@@ -25,7 +25,7 @@ Copied from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstac
 | `improve-codebase-architecture` | Scan for deepening opportunities, then grill one. `/` |
 | `codebase-design` | Deep-module vocabulary. Required by `improve-codebase-architecture`. |
 | `domain-modeling` | Glossary and ADRs. Required by `improve-codebase-architecture`. |
-| `teach` | Teach a topic so it locks in. Probe, plan, node by node. `/` |
+| `teach` | Teach a topic so it locks in. Directory first, then probe, plan, node by node. `/` |
 | `visualize` | One correct diagram when a picture carries the idea. `/`. Used by `teach`. |
 
 `/teach` and `/visualize` require [`@mermaid-js/mermaid-cli`](https://github.com/mermaid-js/mermaid-cli) and Chrome or Chromium. The plan DAG and mermaid pictures render through it. SVG pictures also need `rsvg-convert` or ImageMagick `magick`.

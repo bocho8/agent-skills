@@ -24,8 +24,8 @@ Two principles, every time. Read [references/philosophy.md](references/philosoph
 |---|---|
 | Gradable check | `AskQuestion`. Then in chat: right or wrong, the correct claim, the explanation. |
 | No-right-answer fork | Chat. Preferences, direction, what they want next. |
-| Fact check, field map | `Task` with `generalPurpose`. Short brief. No research file unless they asked for one. Do not call the `research` skill. |
-| Picture | Read `../visualize/SKILL.md` and follow it. |
+| Fact check, field map | Directory first. Then `Task` with `generalPurpose`. Short brief. No research file unless they asked for one. Do not call the `research` skill. |
+| Picture | Local figure if it carries the idea. Else read `../visualize/SKILL.md` and follow it. |
 
 "Let them attempt the discovery" is about who speaks first. If the question has a right answer, it is still `AskQuestion`.
 
@@ -34,6 +34,18 @@ Two principles, every time. Read [references/philosophy.md](references/philosoph
 `$ARGUMENTS` seeds Phase 1b. `/teach` with nothing asks for the goal in chat. Neither skips the probe.
 
 Slug the lesson from the *concrete* Phase 1b goal, kebab-case, not from the slash argument. `/teach rust` that becomes "ownership" is `lessons/rust-ownership.md`.
+
+## Directory
+
+The workspace is the course when it can be a syllabus. Survey it before Phase 1. `lessons/` is resume state, not material.
+
+Then `/teach` with nothing means this material. `$ARGUMENTS` is a zoom that must be in the files. If it is not, stop. They pick a real slice, or they say they want a web lesson off the syllabus.
+
+If nothing here can be a syllabus, ignore this section. Arguments, probe, and researcher run as written everywhere else.
+
+A node is local only if the files can carry the teach loop. A mention is not coverage. Web that node.
+
+Local wins against the web. Mention a conflict only if it would confuse them. Two local files disagree: stop and ask.
 
 ## Lesson file
 
@@ -92,6 +104,8 @@ Read [references/philosophy.md](references/philosophy.md). Do not plan from memo
 
 Spawn a researcher `Task` to map the topic: core concepts, real first principles, standard framings, common gotchas. Cheap, and it stops you planning around a half-remembered version.
 
+If the directory is the syllabus, map from those files instead. Spawn that `Task` only for a node they cannot carry. Put the gap and what local already covers in the prompt.
+
 Then, against the philosophy:
 
 - What are the unconditional truths this rests on? Is there a clean atomic unit?
@@ -105,6 +119,7 @@ Present the plan in chat, always, before any teaching.
 
 1. The approach, in prose. What we will cover, in what order, and why, given their edge and their goal.
 2. The dependency map. Unconditional truths at the roots, derived nodes hanging off them, their goal as the sink. Mermaid after a look-loop. Nested list if mermaid-cli failed.
+3. Provenance. Each node tagged with the path it rests on, or marked as a web gap. Skip this line when there is no syllabus.
 
 Stop. Wait for go-ahead. Do not begin Phase 3 until they okay the plan. Then create `lessons/<slug>.md` with the approach and the map.
 
@@ -119,13 +134,15 @@ One node at a time. Every node, foundation or derived, gets the same loop:
 
 If you catch yourself asserting a fact they would have to take on faith, stop. Motivate and confirm it, or ground it in something already established.
 
-When a picture would show structure or geometry that prose cannot, follow `../visualize/SKILL.md`. One idea. If visualize cannot look at a render, skip the picture.
+When a picture would show structure or geometry that prose cannot, use a local figure if it carries the idea. Else follow `../visualize/SKILL.md`. One idea. If visualize cannot look at a render, skip the picture.
 
-When unsure of a claim, spawn a researcher `Task` before you say it. If the check corrects you, say so.
+When unsure of a claim, check the directory first. Spawn a researcher `Task` before you say it only if the files cannot carry that node. If the check corrects you, say so.
 
 ## Researcher `Task`
 
 Isolated. All context in the prompt. Web search and fetch. Primary sources over blogs.
+
+If this is a gap fill, include the missing claim and what local already established. Do not re-map the local syllabus.
 
 Return a short stand-alone brief:
 
