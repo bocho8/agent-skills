@@ -24,7 +24,7 @@ Two principles, every time. Read [references/philosophy.md](references/philosoph
 |---|---|
 | Gradable check | `AskQuestion`. Then in chat: right or wrong, the correct claim, the explanation. |
 | No-right-answer fork | Chat. Preferences, direction, what they want next. |
-| Fact check, field map | Directory first. Then `Task` with `generalPurpose`. Short brief. No research file unless they asked for one. Do not call the `research` skill. |
+| Fact check, field map | Directory first. Web `Task` only for a hole. No local course: web `Task` maps the topic. Short brief. No research file unless they asked for one. Do not call the `research` skill. |
 | Picture | Local figure if it carries the idea. Else read `../visualize/SKILL.md` and follow it. |
 
 "Let them attempt the discovery" is about who speaks first. If the question has a right answer, it is still `AskQuestion`.
@@ -38,6 +38,8 @@ Slug the lesson from the *concrete* Phase 1b goal, kebab-case, not from the slas
 ## Directory
 
 The workspace is the course when it can be a syllabus. Survey it before Phase 1. `lessons/` is resume state, not material.
+
+Survey with `ls` or `find`, then `Read` the files. Glob is not absence. It misses binaries. If `Read` returns nothing useful, that file cannot carry a node. Those files are the course. Web research is only for a hole they cannot carry.
 
 Then `/teach` with nothing means this material. `$ARGUMENTS` is a zoom that must be in the files. If it is not, stop. They pick a real slice, or they say they want a web lesson off the syllabus.
 
@@ -90,7 +92,7 @@ Never skip. Scale the size to the topic, not the shape.
 - All-correct means the questions were too easy. Escalate until something breaks. If they never miss, you never found the edge.
 - Binary-search. Nail it, jump difficulty up sharply. Miss, you have a ceiling. Narrow in.
 - One miss is not a cue to start teaching. Probe around it. A confidently held wrong model has to be dislodged, not topped up.
-- Map every strand the explanation will lean on. Bound this by relevance to the goal.
+- Map every strand the explanation will lean on. Bound this by relevance to the goal. When Directory ran, those strands come from the files.
 
 Do not start Phase 2 until you can state, for each goal-relevant strand, what they have and where it ends.
 
@@ -102,9 +104,9 @@ On resume, if the file's stated goal matches, do not re-interrogate the vision f
 
 Read [references/philosophy.md](references/philosophy.md). Do not plan from memory of it.
 
-Spawn a researcher `Task` to map the topic: core concepts, real first principles, standard framings, common gotchas. Cheap, and it stops you planning around a half-remembered version.
+If Directory ran, plan from those files. Spawn a web `Task` only for a node they cannot carry. Put the path list, the gap, and what local already covers in the prompt. Never tell it the folder is only an outline.
 
-If the directory is the syllabus, map from those files instead. Spawn that `Task` only for a node they cannot carry. Put the gap and what local already covers in the prompt.
+If Directory did not run, spawn a researcher `Task` to map the topic: core concepts, real first principles, standard framings, common gotchas. Cheap, and it stops you planning around a half-remembered version.
 
 Then, against the philosophy:
 
@@ -140,14 +142,12 @@ When unsure of a claim, check the directory first. Spawn a researcher `Task` bef
 
 ## Researcher `Task`
 
-Isolated. All context in the prompt. Web search and fetch. Primary sources over blogs.
-
-If this is a gap fill, include the missing claim and what local already established. Do not re-map the local syllabus.
+Isolated. All context in the prompt. Web search and fetch. Primary sources over blogs. When Directory ran, this is a hole fill, not a field map. Include the missing claim and what local already established. Do not re-map the local syllabus.
 
 Return a short stand-alone brief:
 
 - Direct answer, a few sentences
-- Numbered findings with source URLs
+- Numbered findings with source URLs or local paths
 - Gaps
 
 Do not write a file. You teach from the brief.
