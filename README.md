@@ -11,7 +11,17 @@ Copied from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstac
 | Skill | When to use |
 |---|---|
 | `grill-me` | Plan or decision before building. No files. `/` |
-| `grill-with-docs` | Same interview, writes `CONTEXT.md` and ADRs as you go. `/` |
+| `grill-with-docs` | Same interview, writes `GLOSSARY.md` and ADRs as you go. `/` |
+| `to-spec` | Turn the conversation into a spec and publish it. `/` |
+| `to-tickets` | Cut a spec into tracer-bullet tickets. `/` |
+| `implement` | One ticket. Stops when the diff is ready. `/` |
+| `implement-spec` | Build the whole spec on one integration branch. `/` |
+| `pr` | PR body: smallest visual, before/after evidence, merge danger. |
+| `retro` | After a session, change the agent's environment. `/` |
+| `setup-skills` | Once per repo: GitHub issues and glossary layout. `/` |
+| `tdd` | Red-green-refactor. `implement-spec` calls it. |
+| `code-review` | Standards and spec review of a diff. `implement-spec` calls it. |
+| `writing-for-agents` | How to write docs an agent reads. `retro` calls it. |
 | `grilling` | Interview primitive. Called by `grill-me`, `grill-with-docs`, and `improve-codebase-architecture`. |
 | `handoff` | Compact this session so another agent can continue. `/` |
 | `unslop` | Strip AI tells from writing. Always-on rule plus `/unslop`. |
@@ -36,7 +46,13 @@ npm install -g @mermaid-js/mermaid-cli
 
 Fedora: `sudo dnf install chromium`. SVG: `sudo dnf install librsvg2-tools`.
 
-Not in this fleet: `implement`, `ask-matt`, `code-review`, `interrogate`, `tdd`. After `/grill-me` or `/grill-with-docs`, implement in the conversation. Tests stay with the user.
+Engineering skills here match [mattpocock/skills v1.3.1](https://github.com/mattpocock/skills/releases/tag/v1.3.1). The domain file is `GLOSSARY.md`. Skills only read that name. In a repo that still has `CONTEXT.md`, run `git mv CONTEXT.md GLOSSARY.md` (and `CONTEXT-MAP.md` to `GLOSSARY-MAP.md`).
+
+`to-issues` is gone upstream. It was merged into `to-tickets`.
+
+Not in this fleet: `ask-matt`. `/implement` is one ticket and leaves the commit to you. `/implement-spec` is the whole spec. Both call `tdd` and `code-review`. `retro` calls `writing-for-agents`. Run `/setup-skills` once per repo before `to-spec`, `to-tickets`, or `implement-spec`.
+
+These skills are the global set (`~/.agents/skills`). Do not copy them into a project's `.agents/skills`.
 
 Skills are opt-in until the agent reads `SKILL.md`. A `description` of "Must always apply" does nothing by itself in Cursor. Always-on behavior is a rule file that forces that read: Cursor `rules/*.mdc`, Claude Code `rules/*.md`. `unslop` and `unslop-ui` are still skills. They live in `skills/` with the rest, show up in `/skills`, and `/unslop` / `/unslop-ui` attach them on a message.
 
@@ -55,7 +71,7 @@ Set-ExecutionPolicy -Scope Process Bypass
 `-Mcp` also installs [codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp). Skills only: `.\install.ps1`.
 
 3. Restart Claude Code. Check `/skills` and `/mcp`.
-4. Slash skills (`/grill-me`, `/grill-with-docs`, `/handoff`, `/blast-radius`, `/bro`, `/unslop`, `/unslop-ui`) only run when the `/` name is on the message you send. `unslop` still applies every reply through the rule.
+4. Slash skills (`/grill-me`, `/grill-with-docs`, `/to-spec`, `/to-tickets`, `/implement`, `/implement-spec`, `/retro`, `/setup-skills`, `/handoff`, `/blast-radius`, `/bro`, `/unslop`, `/unslop-ui`) only run when the `/` name is on the message you send. `unslop` still applies every reply through the rule.
 
 `install.ps1` junctions every skill, including `unslop` and `unslop-ui`, into `%USERPROFILE%\.claude\skills\`. It also copies `unslop.md` / `unslop-ui.md` into `%USERPROFILE%\.claude\rules\` so the short bans are always on. Existing real folders are left alone. Re-run after a pull.
 
