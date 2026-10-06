@@ -19,6 +19,7 @@ Copied from [mattpocock/skills](https://github.com/mattpocock/skills) and [pstac
 | `pr` | PR body: smallest visual, before/after evidence, merge danger. |
 | `retro` | After a session, change the agent's environment. `/` |
 | `setup-skills` | Once per repo: GitHub issues and glossary layout. `/` |
+| `wizard` | Bash script for steps only a human can click through. |
 | `tdd` | Red-green-refactor. `implement-spec` calls it. |
 | `code-review` | Standards and spec review of a diff. `implement-spec` calls it. |
 | `writing-for-agents` | How to write docs an agent reads. `retro` calls it. |
