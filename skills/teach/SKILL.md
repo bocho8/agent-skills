@@ -22,12 +22,13 @@ Two principles, every time. Read [references/philosophy.md](references/philosoph
 
 | Job | Tool |
 |---|---|
-| Gradable check | `AskQuestion`. Then in chat: right or wrong, the correct claim, the explanation. |
+| Pose a gradable question | Chat reply. Prose, with the notation in LaTeX. |
+| Collect its answer | `AskQuestion`, choices only. Then in chat: right or wrong, the correct claim, the explanation. |
 | No-right-answer fork | Chat. Preferences, direction, what they want next. |
 | Fact check, field map | Directory first. Web `Task` only for a hole. No local course: web `Task` maps the topic. Short brief. No research file unless they asked for one. Do not call the `research` skill. |
 | Picture | Local figure if it carries the idea. Else read `../visualize/SKILL.md` and follow it. |
 
-"Let them attempt the discovery" is about who speaks first. If the question has a right answer, it is still `AskQuestion`.
+"Let them attempt the discovery" is about who speaks first. When the question has a right answer: the question goes in the chat reply, the answer choices go on the card. They answer before they are told.
 
 ## `/teach` arguments
 
@@ -73,6 +74,8 @@ If the file already exists, read it first. Landed nodes are a floor. Probe holes
 
 Build them so evenness is automatic. Do not write a good answer plus throwaways and audit later.
 
+The reply states the question and its notation. The card holds the choices. They answer on the card, and only then does the reply continue with right or wrong, the correct claim, and the explanation. They never see the answer before they answer.
+
 1. Every option is a bare claim. No justification in any option. All reasoning goes in the explanation you give *after* they answer.
 2. Draft the correct claim. Mutate it into each distractor: one real misconception, same skeleton, grain, and register. The correct option is just the claim under the correct belief.
 3. Each distractor is an error they might actually make, and unambiguously wrong on the intended reading.
@@ -81,13 +84,13 @@ Build them so evenness is automatic. Do not write a good answer plus throwaways 
 
 If you can tell which is right without knowing the material, regenerate. Do not patch.
 
-After `AskQuestion` returns, say whether they got it, name the correct claim, explain. Then the next question or the next node.
+After `AskQuestion` returns an answer: say whether they got it, name the correct claim, explain. Then the next question or the next node.
 
 ## Phase 1. Probe
 
 Never skip. Scale the size to the topic, not the shape.
 
-**1a. Level. `AskQuestion` only.** Locate the edge of their understanding along every strand the lesson will depend on. The edge is located when it is bracketed: something they get right (floor) and something they get wrong or do not know (ceiling).
+**1a. Level.** Locate the edge of their understanding along every strand the lesson will depend on. The edge is located when it is bracketed: something they get right (floor) and something they get wrong or do not know (ceiling).
 
 - All-correct means the questions were too easy. Escalate until something breaks. If they never miss, you never found the edge.
 - Binary-search. Nail it, jump difficulty up sharply. Miss, you have a ceiling. Narrow in.
@@ -130,9 +133,9 @@ Stop. Wait for go-ahead. Do not begin Phase 3 until they okay the plan. Then cre
 One node at a time. Every node, foundation or derived, gets the same loop:
 
 1. **Motivate.** Why this node, now.
-2. **Establish.** Unconditional truth: state it plainly, no caveats. Atomic unit if one fits. Derived step: build it from what is already established, Socratic or expository. Gradable Socratic steps are `AskQuestion`.
+2. **Establish.** Unconditional truth: state it plainly, no caveats. Atomic unit if one fits. Derived step: build it from what is already established, Socratic or expository. Gradable Socratic steps are asked in the chat reply and answered on the card.
 3. **Connect.** Make the dependency edge explicit.
-4. **Quiz-check.** `AskQuestion`. If they miss, that node is not solid. Stop and fix it before building on it.
+4. **Quiz-check.** Ask in the chat reply, choices on the card. If they miss, that node is not solid. Stop and fix it before building on it.
 
 If you catch yourself asserting a fact they would have to take on faith, stop. Motivate and confirm it, or ground it in something already established.
 
@@ -156,11 +159,11 @@ Do not write a file. You teach from the brief.
 
 If the lesson needs notation, write LaTeX. Never `f(x) = x^2` as plain text.
 
-Cursor chat does not typeset `$...$`. Those dollars stay on the page. In the teaching reply: `\(f(x)\)` inline, `\[...\]` or `$$` for display. Never `$f(x)$`.
+This reply does not typeset `$...$`. Single-dollar math is off in this renderer, so the dollars show up as literal text, in the reply and on the card alike. In the teaching reply: `\(f(x)\)` inline, `\[...\]` or `$$` for display. Never `$f(x)$` there.
 
 In `lessons/<slug>.md`: `$f(x)$` inline, `$$` for display. That file is markdown. Do not copy the chat delimiters into it.
 
-`AskQuestion` option labels are plain text. Write `15 + 10 - 5 = 20` there, no delimiters.
+For a question, that means the question text and its formulas go in the reply. `AskQuestion` option labels are plain text, so write `(a -> Bool) -> a -> Bool` there, no delimiters.
 
 ## Pictures
 
